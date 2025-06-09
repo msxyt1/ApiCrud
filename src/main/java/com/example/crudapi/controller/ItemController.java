@@ -20,12 +20,12 @@ public class ItemController {
         Item createdItem = itemService.addItem(item);
         return ResponseEntity.ok(createdItem);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Item> getItem(@PathVariable Long id) {
-        Item item = itemService.getItemById(id);
-        return ResponseEntity.ok(item);
-    }
+@GetMapping("/{id}")
+public ResponseEntity<Item> getItem(@PathVariable Long id) {
+    return itemService.getItemById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+}
 
     @PutMapping("/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item item) {
