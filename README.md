@@ -38,19 +38,17 @@ java-crud-api
 ## Setup Instructions
 
 1. **Clone the repository:**
-   ```
-   git clone <repository-url>
-   cd java-crud-api
-   ```
+
+mvn clean package
 
 2. **Build the project:**
    ```
-   mvn clean install
+   docker build -t apicrud
    ```
 
 3. **Run the application using Docker:**
    ```
-   docker-compose up --build
+docker run -p 8080:8080 apicrud
    ```
 
 4. **Access the API:**
